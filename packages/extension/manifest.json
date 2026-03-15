@@ -2,7 +2,12 @@
   "manifest_version": 3,
   "name": "ClawOS Plugin",
   "version": "0.5.2",
-  "description": "Browser automation for AI agents",
+  "description": "ClawOS Plugin — 招聘平台 CLI 自动化",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
   "permissions": ["tabs", "activeTab", "scripting", "debugger", "storage", "alarms", "history"],
   "host_permissions": ["<all_urls>"],
   "options_page": "options.html",
