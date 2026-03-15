@@ -133,7 +133,7 @@ ClawOS 内置 MCP server，可集成到 Claude Code / Cursor 等 AI 工具：
 
 ## 架构 / Architecture
 
-基于 [bb-browser](https://github.com/epiral/bb-browser) (MIT) fork，感谢原作者。
+基于 [bb-browser](MIT) fork，感谢原作者。
 
 ```
 clawos CLI ──HTTP──▶ clawos daemon ──SSE──▶ Chrome Extension ──▶ 浏览器页面
