@@ -1,25 +1,27 @@
 # ClawOS Plugin
 
-**招聘平台 CLI 自动化** — 用你的真实浏览器登录态，把 BOSS 直聘、猎聘、脉脉、TTC 人才库变成命令行 API。
+**招聘平台 CLI 自动化** — 基于 Chrome DevTools Protocol，用你的真实浏览器登录态，把 BOSS 直聘、猎聘、脉脉、TTC 人才库变成命令行 API。
 
-## 它是什么
+[OpenClaw](https://github.com/openclaw) 生态的招聘自动化组件。
 
-ClawOS 是一个浏览器自动化工具，通过 Chrome 扩展直接操控你正在使用的浏览器。你在浏览器里已经登录的招聘平台，ClawOS 可以直接调用它们的 API，就像你在页面上手动操作一样。
+## 工作原理
+
+ClawOS 通过 Chrome DevTools Protocol (CDP) 直接与你的浏览器通信。你在浏览器里已经登录的招聘平台，ClawOS 可以直接调用它们的内部 API — 就像你在页面上手动操作一样，但全部通过命令行完成。
 
 ```
-你的终端 ──▶ ClawOS CLI ──▶ 本地 Daemon ──▶ Chrome 扩展 ──▶ 招聘平台页面
+你的终端 ──▶ ClawOS CLI ──▶ 本地 Daemon (CDP) ──▶ Chrome 扩展 ──▶ 招聘平台
 ```
 
 所有数据在你本地流转，不经过任何第三方服务器。
 
 ## 相比传统方案的优势
 
-| | 传统爬虫 / Selenium | ClawOS |
+| | 传统爬虫 / Selenium / Playwright | ClawOS (CDP) |
 |---|---|---|
 | **登录态** | 需要手动提取 Cookie、Token，过期后重新获取 | 直接用浏览器已有的登录态，无需管理 Cookie |
 | **反爬检测** | 频繁被风控拦截，需要不断更新绕过策略 | 在真实浏览器中执行，平台无法区分人工和自动操作 |
-| **环境依赖** | 需要 headless Chrome、Puppeteer/Playwright 等重量级依赖 | 一个 Chrome 扩展 + 轻量 CLI，几分钟装好 |
-| **维护成本** | 页面改版就要重写解析逻辑 | 调用平台自己的内部 API，不依赖 DOM 结构 |
+| **环境依赖** | 需要 headless Chrome、复杂的 driver 管理 | 一个 Chrome 扩展 + 轻量 CLI，几分钟装好 |
+| **维护成本** | 页面改版就要重写 DOM 解析逻辑 | 直接调用平台内部 API，不依赖 DOM 结构 |
 | **数据安全** | Cookie/Token 可能泄露到服务器 | 所有操作在本地完成，数据不离开你的电脑 |
 
 ## 安装
@@ -171,7 +173,7 @@ npm install -g .
 
 ## 致谢
 
-核心浏览器自动化引擎基于 [bb-browser](https://github.com/epiral/bb-browser) (MIT License) 构建。
+浏览器通信层参考了 [bb-browser](https://github.com/epiral/bb-browser) 的实现。
 
 ## License
 
