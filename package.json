@@ -1,0 +1,66 @@
+{
+  "name": "clawos-plugin",
+  "version": "0.6.0",
+  "description": "ClawOS Plugin — 招聘平台 CLI 自动化，将 BOSS/猎聘/脉脉/TTC 变成命令行 API",
+  "type": "module",
+  "bin": {
+    "clawos": "./dist/cli.js",
+    "clawos-mcp": "./dist/mcp.js"
+  },
+  "main": "./dist/cli.js",
+  "files": [
+    "dist",
+    "sites",
+    "extension",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "turbo run build && pnpm build:release",
+    "build:release": "tsup && cp -r sites dist/sites && pnpm build:extension",
+    "build:extension": "cp -r packages/extension/dist extension",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules dist extension",
+    "prepublishOnly": "pnpm build:release"
+  },
+  "keywords": [
+    "browser",
+    "automation",
+    "ai",
+    "agent",
+    "chrome",
+    "extension",
+    "cli",
+    "puppeteer",
+    "playwright",
+    "cdp",
+    "mcp"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ottin4ttc/clawos-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ottin4ttc/clawos-plugin/issues"
+  },
+  "homepage": "https://github.com/ottin4ttc/clawos-plugin#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "dependencies": {
+    "ws": "^8.18.0",
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "turbo": "^2.3.0",
+    "typescript": "^5.7.0"
+  }
+}
