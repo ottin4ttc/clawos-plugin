@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ClawOS Plugin",
-  "version": "0.5.2",
+  "version": "0.1.0",
   "description": "ClawOS Plugin — 招聘平台 CLI 自动化",
   "icons": {
     "16": "icon16.png",
